@@ -23,5 +23,41 @@ Minha solução para o teste técnico para vaga de Engenheiro de Dados na Forego
 ### Arquitetura do Projeto
 ![plot](./arquitetura_foregon.png)
 
-## Implementação
+### Implementação
 Para a implementação do projeto, utilizei Pyspark, pois é o mais adequeado para lidar com maiores volumes de dados. Rodei os códigos no ambiente do AWS Glue Jobs, um serviço de ETL serverless. Para possibilitar que o conjunto de dados torne-se insights para o time de analytics, construi um processo de ETL de descompacta os jsons, ou seja: um campo que seja da seguinte forma {'campo':{'outro_campo':'valor'}}, será transformado em uma coluna individual. Além disso, campos que contenham multiplos valores, como um array, serão transformados em linhas separadas, por exemplo: {'campo':[1,2,3]}, será transformado em 3 linhas individuais, visando facilitar o uso de SQL para analisar os dados, além de ter um ganho de performance. Por fim, orquestrei todas as fases de tratamento por meio de uma Step Function.
+
+### Analises
+
+#### Quantos usuários por dia temos?
+```sql
+SELECT count(DISTINCT _id)
+	,date_trunc('day', "createdat_$date")
+FROM user_data_products
+GROUP BY date_trunc('day', "createdat_$date")
+ORDER BY date_trunc('day', "createdat_$date");
+```
+
+#### Quantos usuários marcaram que possuem cada tipo de produto?
+```sql
+SELECT count(_id) as qtd_users
+	,alreadyhaveproducts_producttype
+FROM user_data_products
+GROUP BY alreadyhaveproducts_producttype
+ORDER BY alreadyhaveproducts_producttype
+```
+
+#### Quais usuários marcaram que possuem cada tipo de produto?
+```sql
+SELECT _id
+	,alreadyhaveproducts_producttype
+FROM user_data_products
+ORDER BY alreadyhaveproducts_producttype;
+```
+
+#### Quantos usuários possuem scores nos ranges
+```sql
+SELECT score_group
+	,"count"
+	,ingestion_date
+FROM user_data_score_grouped;
+```

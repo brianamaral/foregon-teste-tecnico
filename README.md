@@ -21,7 +21,7 @@ Minha solução para o teste técnico para vaga de Engenheiro de Dados na Forego
 ```
 
 ### Arquitetura do Projeto
-![plot](./assets/arquitetura_etl.png)
+![plot](./arquitetura_foregon.png)
 
 ## Implementação
 

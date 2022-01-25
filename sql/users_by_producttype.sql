@@ -1,0 +1,5 @@
+SELECT count(_id) as qtd_users
+	,alreadyhaveproducts_producttype
+FROM user_data_products
+GROUP BY alreadyhaveproducts_producttype
+ORDER BY alreadyhaveproducts_producttype

@@ -1,0 +1,4 @@
+SELECT _id
+	,alreadyhaveproducts_producttype
+FROM user_data_products
+ORDER BY alreadyhaveproducts_producttype;

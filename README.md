@@ -16,8 +16,8 @@ Minha solução para o teste técnico para vaga de Engenheiro de Dados na Forego
 |--terraform #arquivos .tf que utilizei para construir a infra
 |--ETL #codigos da pipeline
 	|--etl_silver.py #script que leva os dados da camada bronza para a silver
-  |--etl_user_products_gold.py #script que transforma os dados para analise de produtos dos usuarios e os joga para a camada gold 
-  |--etl_user_scores_gold.py #script que transforma os dados para calculo da quantidade de usuarios para o range de scores definido
+  	|--etl_user_products_gold.py #script que transforma os dados para analise de produtos dos usuarios e os joga para a camada gold 
+  	|--etl_user_scores_gold.py #script que transforma os dados para calculo da quantidade de usuarios para o range de scores definido
 ```
 
 ### Arquitetura do Projeto

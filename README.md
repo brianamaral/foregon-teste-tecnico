@@ -59,5 +59,19 @@ ORDER BY alreadyhaveproducts_producttype;
 SELECT score_group
 	,"count"
 	,ingestion_date
-FROM user_data_score_grouped;
+FROM user_data_score_grouped
+ORDER BY (
+		CASE 
+			WHEN score_group = 'ATE 200'
+				THEN 1
+			WHEN score_group = 'DE 201 a 400'
+				THEN 2
+			WHEN score_group = 'DE 401 A 600'
+				THEN 3
+			WHEN score_group = 'DE 601 A 800'
+				THEN 4
+			WHEN score_group = 'ACIMA DE 800'
+				THEN 5
+			END
+		);
 ```
